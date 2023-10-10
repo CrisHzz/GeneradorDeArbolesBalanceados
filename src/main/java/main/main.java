@@ -1,3 +1,5 @@
+package main;
+import classes.menu;
 import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
@@ -7,6 +9,8 @@ public class main {
         menu.initialtext();
         String user_option=prueba.next();
         menu.optionsInitial(user_option);
+        
+
 
     }
 }
