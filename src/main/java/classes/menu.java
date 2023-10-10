@@ -1,3 +1,4 @@
+package classes;
 import java.util.Scanner;
 public class menu {
     private String user_option;
