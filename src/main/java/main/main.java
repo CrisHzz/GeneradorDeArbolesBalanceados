@@ -8,10 +8,5 @@ public class main {
         String user_option=prueba.next();
         menu.optionsInitial(user_option);
 
-
-
-
-
-
     }
 }
