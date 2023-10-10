@@ -33,6 +33,6 @@ Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 
 -5)Recorrido preOrden
 
--5)Recorrido inOrden
+-6)Recorrido inOrden
 
--6)Recorrido postOrden
+-7)Recorrido postOrden
