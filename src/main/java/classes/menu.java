@@ -23,8 +23,11 @@ public class menu {
                     System.out.println("Thanks for using our program, see you soon :) ! ");
                     System.exit(0);
                     break;
-                default:
 
+                case "0":
+                    voidtree();
+                    break;  
+                default:
                     System.out.println("Invalid option, try again :)");
                     Scanner scanner = new Scanner(System.in);
                     user_option = scanner.nextLine();
@@ -42,6 +45,7 @@ public class menu {
     System.out.println("Please, enter the number of nodes you want to enter:");
     Scanner scanner = new Scanner(System.in);
     int numberNodes = scanner.nextInt();
+    //TODO: SOLAMENTE HAY LA SOLICITUD DE LOS NODOS A REQUERIR
        
     }
 
@@ -50,30 +54,34 @@ public class menu {
         System.out.println("Your undetermined tree has been created, bye bye :)");
     }
 
+    public void voidtree(){
+        System.out.println("The void tree have been created");
+    }
+
     public void nodeOptions(String user_option) {
         do {
-            System.out.println("1) Mostrar la cantidad de nodos.\n2) Mostrar cantidad de hojas.\n3) Mostrar número de niveles.\n4) Mostrar anchura del árbol.\n5) Recorrido preOrden.\n6) Recorrido inOrden.\n7) Recorrido postOrden.");
+            System.out.println("1) Show the number of nodes.\n2) Show the number of leaves.\n3) Show the number of levels.\n4) Show the width of the tree.\n5) Pre-order traversal.\n6) In-order traversal.\n7) Post-order traversal.");
             switch (user_option) {
                 case "1":
-                    mostrarCantidadNodos();
+                    showAmountNodes();
                     break;
                 case "2":
-                    mostrarCantidadHojas();
+                    showAmountLeafs();
                     break;
                 case "3":
-                    mostrarNumeroNiveles();
+                    showNumberLevels();
                     break;
                 case "4":
-                    mostrarAnchuraArbol();
+                    showWidthTree();
                     break;
                 case "5":
-                    recorridoPreOrden();
+                    routePreOrden();
                     break;
                 case "6":
-                    recorridoInOrden();
+                    routeInOrden();
                     break;
                 case "7":
-                    recorridoPostOrden();
+                    routePostOrden();
                     break;
                 case "x":
                     System.exit(0);
@@ -85,34 +93,34 @@ public class menu {
         } while (!user_option.equals("x"));
     }
 
-    public void mostrarCantidadNodos(){
+    public void showAmountNodes(){
         // TODO: Implementar esta función
     }
 
-    public void mostrarCantidadHojas(){
-        // TODO: Implementar esta función
-
-    }
-
-    public void mostrarNumeroNiveles(){
+    public void showAmountLeafs(){
         // TODO: Implementar esta función
 
     }
 
-    public void mostrarAnchuraArbol(){
+    public void showNumberLevels(){
+        // TODO: Implementar esta función
+
+    }
+
+    public void showWidthTree(){
 
         // TODO: Implementar esta función
     }
 
-    public void recorridoPreOrden(){
+    public void routePreOrden(){
         // TODO: Implementar esta función
 
     }
-    public void recorridoInOrden(){
+    public void routeInOrden(){
         // TODO: Implementar esta función
 
     }
-    public void recorridoPostOrden(){
+    public void routePostOrden(){
         // TODO: Implementar esta función
     }
 
