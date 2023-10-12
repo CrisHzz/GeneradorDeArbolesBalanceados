@@ -20,6 +20,9 @@ Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 
 -Se debe tener un MUY BUEN control de excepciones.
 
+-Si la opcion es 0 se generar un arbol vacio
+
+
 -El balanceo debe de hacer solo hasta los nodos entregados.
 ## Menu
 
