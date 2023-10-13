@@ -26,16 +26,21 @@ Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 -El balanceo debe de hacer solo hasta los nodos entregados.
 ## Menu
 
--1)Mostrar la cantidad de nodos.
 
--2)Mostrar cantidad de hojas.
+1.	Reciba -1 para recibir nodos infinitos y X para que se detenga
+2.	Reciba 0 para un árbol vacio
+3.	Reciba un entero positivo para el numero de nodos. 
+4.	A cualquier otro valor debe mostrar un mensaje informando que la opción no es valida.
 
--3)Mostrar numero de niveles.
 
--4)Mostrar anchura del arbol.
+## Menu despues de ingresar nodos
 
--5)Recorrido preOrden
 
--6)Recorrido inOrden
+1.	Recorrido PostOrder del árbol ingresado anteriormente.
+2.	Recorrido PreOrder del árbol ingresado anteriormente.
+3.	Recorrido InOrder del árbol ingresado anteriormente.
+4.	Numero de Hojas.
+5.	Altura
+6.	Decir si es completo o no
+7.	Numero de Nodos
 
--7)Recorrido postOrden
