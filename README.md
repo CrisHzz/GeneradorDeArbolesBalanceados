@@ -6,6 +6,8 @@ Se trata de un proyecto creado para la clase de Estructuras de datos dinamicas, 
 Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 
 
+## Ejecutar el archivo main en la carpeta GeneradorDeArbolesBalanceados\src\main\java\main
+
 
 
 

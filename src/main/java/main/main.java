@@ -10,8 +10,5 @@ public class main {
         menu.initialtext();
         String user_option=prueba.next();
         menu.optionsInitial(user_option);
-        
-
-
     }
 }

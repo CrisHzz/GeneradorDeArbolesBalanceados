@@ -89,46 +89,25 @@ public class NodeIntTree {
     }
     
     
-    public int treeHeight(NodeIntTree dad) {
-        if (dad == null) {
+    public int treeHeight(NodeIntTree daddy) {
+        if (daddy == null) {
             return 0;
         } else {
-            int leftHeightB = treeHeight(dad.kidLeft);
-            int rightHeightA = treeHeight(dad.kidRight);
+            int leftHeightB = treeHeight(daddy.kidLeft);
+            int rightHeightA = treeHeight(daddy.kidRight);
             return Math.max(leftHeightB, rightHeightA) + 1;
         }
     }
 
-    public static NodeIntTree createTree(int numNodes, Scanner scanner) {
-        return createTreeR(numNodes, scanner);
-    }
-    private static NodeIntTree createTreeR(int numNodes, Scanner scanner) {
-        if (numNodes <= 0) {
-            return null;
-        }
-        
-        System.out.println("Please, enter the value of the node:");
-        int value = scanner.nextInt();
-        
-        NodeIntTree node = new NodeIntTree(value);
-        
-        int leftNodes = numNodes / 2;
-        int rightNodes = numNodes - leftNodes - 1;
 
-        node.kidLeft = createTreeR(leftNodes, scanner);
-        node.kidRight = createTreeR(rightNodes, scanner);
+    public boolean isComplete(int index, int nodesQuantity) {
         
-        return node;
-    }
-
-    public boolean isComplete(int index, int numberNodes) {
-        
-        if (index >= numberNodes) {
+        if (index >= nodesQuantity) {
             return false;
         }
-    
-        boolean leftIsFull = (kidLeft != null) ? kidLeft.isComplete(2 * index + 1, numberNodes) : true;
-        boolean rightIsFull = (kidRight != null) ? kidRight.isComplete(2 * index + 2, numberNodes) : true;
+
+        boolean leftIsFull = (kidLeft != null) ? kidLeft.isComplete(2 * index + 1, nodesQuantity) : true;
+        boolean rightIsFull = (kidRight != null) ? kidRight.isComplete(2 * index + 2, nodesQuantity) : true;
     
         return leftIsFull && rightIsFull;
     }
@@ -156,7 +135,44 @@ public class NodeIntTree {
         int numberNodes = countNodesUndeterminated(this);
         return isComplete(0, numberNodes);
     }
-    
+
+    public LinkedList runToLinkedList() {
+        LinkedList list = new LinkedList();
+        runToLinkedList(this, list);
+        return list;
+    }
+
+    private void runToLinkedList(NodeIntTree node, LinkedList miniLinkedList) {
+        if (node != null) {
+            runToLinkedList(node.kidLeft, miniLinkedList);
+            miniLinkedList.add(node.value);
+            runToLinkedList(node.kidRight, miniLinkedList);
+        }
+    }
+
+    public NodeIntTree makeBalancedTree(LinkedList miniLinkedList) {
+        int momentNumber = miniLinkedList.size();
+        return makeBalancedTree(miniLinkedList, 0, momentNumber - 1);
+    }
+
+    private NodeIntTree makeBalancedTree(LinkedList miniLinkedList, int initial, int end) {
+        if (initial > end) {
+            return null;
+        }
+
+        int mid = (initial + end) / 2;
+        NodeIntTree node = new NodeIntTree(miniLinkedList.get(mid));
+
+        node.kidLeft = makeBalancedTree(miniLinkedList, initial, mid - 1);
+        node.kidRight = makeBalancedTree(miniLinkedList, mid + 1, end);
+        return node;
+    }
+
+    public NodeIntTree balanceTree() {
+        LinkedList list = this.runToLinkedList();
+        return makeBalancedTree(list);
+    }
+
 }
         
 
