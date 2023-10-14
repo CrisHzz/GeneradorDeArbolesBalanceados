@@ -107,7 +107,7 @@ public class menu {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
+                    System.out.println("Invalid option, please try again ;)");
                     break;
             }
         } while (!user_option.equals("x"));
