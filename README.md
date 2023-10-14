@@ -41,6 +41,7 @@ Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 3.	Recorrido InOrder del árbol ingresado anteriormente.
 4.	Numero de Hojas.
 5.	Altura
-6.	Decir si es completo o no
-7.	Numero de Nodos
+6.	Numero de Nodos
+7.	Decir si es completo o no
+8.  Balancear arbol a tree
 
