@@ -45,5 +45,8 @@ Arbol completo: El anterior tiene el mayor numero de nodos posibles.
 5.	Altura
 6.	Numero de Nodos
 7.	Decir si es completo o no
-8.  Balancear arbol a tree
+8.  Balancear arbol
+9.  Verificar si un numero esta en un arbol(NUEVA)
+10. Encontrar numero maximo en el arbol.(NUEVA)
+11. Encontrar numero minimo en el arbol.(NUEVA)
 

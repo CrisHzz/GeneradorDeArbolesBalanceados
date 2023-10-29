@@ -173,6 +173,89 @@ public class NodeIntTree {
         return makeBalancedTree(list);
     }
 
+    public boolean findNodeInTree(int value) {
+        if (this.value == value) {
+            System.out.println("The number " + value + " is in the tree");
+            return true;
+        } else if (this.value > value) {
+            if (this.kidLeft != null) {
+                return this.kidLeft.findNodeInTree(value);
+            }
+        } else {
+            if (this.kidRight != null) {
+                return this.kidRight.findNodeInTree(value);
+            }
+        }
+        
+        System.out.println("The number " + value + " isn't in the tree");
+        return false;
+    }
+
+    public int findMax(NodeIntTree daddy) {
+        if (daddy == null) {
+            return Integer.MIN_VALUE;
+        }
+    
+        int max = daddy.value;
+        int leftMax = findMax(daddy.kidLeft);
+        int rightMax = findMax(daddy.kidRight);
+    
+        if (leftMax > max) {
+            max = leftMax;
+        }
+    
+        if (rightMax > max) {
+            max = rightMax;
+        }
+    
+        return max;
+    }
+
+    public int findMin(NodeIntTree daddy) {
+        if (daddy == null) {
+            return Integer.MAX_VALUE;
+        }
+    
+        int min = daddy.value;
+        int leftMin = findMin(daddy.kidLeft);
+        int rightMin = findMin(daddy.kidRight);
+    
+        if (leftMin < min) {
+            min = leftMin;
+        }
+    
+        if (rightMin < min) {
+            min = rightMin;
+        }
+    
+        return min;
+    }
+    
+
+
+    
+    
+        
+    
+    
+    
+    
+
+
+
+
+    
+       
+
+    
+
+    
+    
+        
+    
+    
+    
+
 }
         
 

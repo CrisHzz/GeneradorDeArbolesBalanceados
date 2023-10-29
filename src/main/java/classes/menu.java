@@ -24,12 +24,15 @@ public class menu {
                 voidtree.value = 0;
                 voidtree.kidLeft = null;
                 voidtree.kidRight = null;
-                System.out.println("All characteristics of the void tree are 0");
-                System.out.println("the kidRight is" + voidtree.kidRight);
-                System.out.println("the kidLeft is" + voidtree.kidLeft);
-                System.out.println("the value is" + voidtree.value);
+                System.out.println("-------------------");
+                System.out.println("All characteristics of the void tree are null because it is a void tree");
+                System.out.println("the kidRight is " + voidtree.kidRight);
+                System.out.println("the kidLeft is " + voidtree.kidLeft);
+                System.out.println("the value of daddy is " + voidtree.value);
+                System.out.println("-------------------");
                 System.out.println("\nnow we gonna send you to the menu again");
                 System.out.println("\nPlease enter a new option:");
+                System.out.println("Welcome to the tree generation program (balanced)\n  1)Enter nodes with set quantity, Press (1)\n -1)Enter Nodes with undetermined amount Press (-1)\n  x)Close the machine,\n 99)To create a void tree Press x\nEnter your choice:");
                 Scanner scanner = new Scanner(System.in);
                 String new_option = scanner.nextLine();
                 optionsInitial(new_option);
@@ -59,11 +62,22 @@ public class menu {
     public void nodeDeterminaded() {
     System.out.println("Please, enter the number of nodes you want to enter:");
     Scanner scanner = new Scanner(System.in);
-    int maxNodes = scanner.nextInt();
-    scanner.nextLine();
-    System.out.println("Remember, if you press x the program will not take more values");   
-    System.out.println("\nWARNING YOU HAVE TO ENTER THE THREE USING THE CORRECT STRUCTURE,FIRST THE LEFT VALUES AND LAST THE RIGHT VALUES, THE LEFT VALUES ARE MORE BIGGER THAN THE RIGHT\n");
-    System.out.println("¡Okey! :) , enter the values of the nodes:");
+    int maxNodes = 0;
+
+    while (true) {
+        String input = scanner.nextLine().trim(); 
+        if (!input.isEmpty()) {
+            try {
+                maxNodes = Integer.parseInt(input);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number:");
+            }
+        } else {
+            System.out.println("Input cannot be empty. Please enter a valid number:");
+        }
+    }
+    warnings();
     NodeIntTree daddy = null;
     NodeIntTree aux= new NodeIntTree();        
     int countQuantity = 0;
@@ -83,10 +97,9 @@ public class menu {
         }
 
         do {
-            System.out.println("What do you want to do?\n1) Pre-order traversal.\n2) In-order traversal.\n3) Post-order traversal.\n4) Show the number of leafs.\n5) Show the height of the tree.\n6) Show the number of nodes.\n7) Show if the tree is complete.\n8) Balance a tree.\nx)Press x to exit");
+            menuOptionsTree();
             Scanner scanner2 = new Scanner(System.in);
             user_option = scanner2.nextLine();
-
             switch (user_option) {
                 case "1":
                 System.out.println("Pre-order route is:");
@@ -124,6 +137,22 @@ public class menu {
                     daddy=daddy.balanceTree();
                     System.out.println("The tree has been balanced, you can check it with the options of the menu");
                     break;
+                case "9":
+                    System.out.println("Please enter a number for search in the tree");
+                    Scanner scanner4= new Scanner(System.in);
+                    int number=scanner4.nextInt();
+                    daddy.findNodeInTree(number);
+                    break;
+                case "10":
+                    NodeIntTree node = new NodeIntTree();
+                    int max= node.findMax(daddy);
+                    System.out.println("The max value in the tree is "+max);
+                    break;
+                case "11":
+                    NodeIntTree node2 = new NodeIntTree();
+                    int min= node2.findMin(daddy);
+                    System.out.println("The min value in the tree is "+min);
+                    break;    
                 case "x":
                     System.out.println("Thanks for using our program, see you soon :) ! ");
                     System.exit(0);
@@ -133,35 +162,44 @@ public class menu {
                     break;
             }
         } while (!user_option.equals("x"));
-    
-        
+       
     }
-
     public void nodeUndetermined() {
-        System.out.println("Please, enter the values of the nodes (enter 'x' to stop):");
+        System.out.println("Are you ready? :) Y/N");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
+        String placeholder = scanner.next();
+          
+        System.out.println("Lets start!");
+        System.out.println("Please, enter the values of the nodes (enter 'x' to stop):");
+        
         NodeIntTree daddy = null;
         NodeIntTree aux= new NodeIntTree();        
         int nodeCount = 0;
-
-        while (!input.equals("x")) {
-            int value = Integer.parseInt(input);
-            if (value < 0) {
-                System.out.println("Invalid input. Please enter a positive integer.");
-            } else {
-                daddy = aux.addNode(daddy, value);
-                nodeCount++;
+    
+        while (true) {
+            String request = scanner.next();
+    
+            if (request.equals("x")) {
+                break;
             }
-            input = scanner.next();
+    
+            try {
+                int value = Integer.parseInt(request);
+                if (value < 0) {
+                    System.out.println("Invalid input. Please enter a positive integer.");
+                } else {
+                    daddy = aux.addNode(daddy, value);
+                    nodeCount++;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a positive integer.");
+            }
         }
-
-
+    
         do {
-            System.out.println("What do you want to do?\n1) Pre-order traversal.\n2) In-order traversal.\n3) Post-order traversal.\n4) Show the number of leafs.\n5) Show the height of the tree.\n6) Show the number of nodes.\n7) Show if the tree is complete.\n8) Balance a tree.\nx)Press x to exit");
+            menuOptionsTree();
             Scanner scanner2 = new Scanner(System.in);
             user_option = scanner2.nextLine();
-
             switch (user_option) {
                 case "1":
                 System.out.println("Pre-order route is:");
@@ -199,12 +237,28 @@ public class menu {
                     daddy=daddy.balanceTree();
                     System.out.println("The tree has been balanced, you can check it with the options of the menu");
                     break;
+                 case "9":
+                    System.out.println("Please enter a number for search in the tree");
+                    Scanner scanner4= new Scanner(System.in);
+                    int number=scanner4.nextInt();
+                    daddy.findNodeInTree(number);
+                    break;
+                 case "10":
+                    NodeIntTree node = new NodeIntTree();
+                    int max= node.findMax(daddy);
+                    System.out.println("The max value in the tree is "+max);
+                    break;   
+                case "11":
+                    NodeIntTree node2 = new NodeIntTree();
+                    int min= node2.findMin(daddy);
+                    System.out.println("The min value in the tree is "+min);
+                    break;    
                 case "x":
                     System.out.println("Thanks for using our program, see you soon :) ! ");
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
+                    System.out.println("Invalid option, try again :)");
                     break;
             }
         } while (!user_option.equals("x"));
@@ -215,11 +269,19 @@ public class menu {
         System.out.println("The void tree have been created");
     }
 
+    public void menuOptionsTree(){
+        System.out.println("What do you want to do?\n1) Pre-order traversal.\n2) In-order traversal.\n3) Post-order traversal.\n4) Show the number of leafs.\n5) Show the height of the tree.\n6) Show the number of nodes.\n7) Show if the tree is complete.\n8) Balance a tree.\n9) Find a number in the tree. (NEW FUNCTION) \n10) Show the max value in the tree.(NEW FUNCTION) \n11) Show the min value in the tree.(NEW FUNCTION) \nx) Press x to exit");
+    }
+
+    public void warnings(){
+        System.out.println("Remember, if you press x the program will not take more values");   
+        System.out.println("\nWARNING YOU HAVE TO ENTER THE Tree USING THE CORRECT STRUCTURE,FIRST THE LEFT VALUES AND LAST THE RIGHT VALUES, THE LEFT VALUES ARE MORE BIGGER THAN THE RIGHT\n");
+        System.out.println("¡Okey! :) , enter the values of the nodes:");
+    }
+
 
 
     
-
-
     public void welcome() {
         String title =
                 "        ████████╗██████╗ ███████╗███████╗                                            \n" +
